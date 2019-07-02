@@ -1,0 +1,31 @@
+#center {
+    width: 85%;
+    margin-left: 15%;
+}
+#left {
+	background: #e7e92a;
+    width: 15%;
+    padding-bottom: 80vh;
+    float: left;
+}
+#sidebar-container {
+	height: 100%;
+    width: 100%;
+    margin: 0%;
+    float: left;
+}
+.column {
+	height: 100%;
+}
+.orderlist {
+    color: darkgreen;
+    margin-left: 10%;
+}
+.subject {
+    color: darkgreen;
+    margin-left: 10%;
+}
+.table-header{
+    border-collapse: collapse;
+    width: 100%;
+}

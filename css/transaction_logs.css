@@ -1,0 +1,22 @@
+#selectdate,#information{
+	width: 100%;
+}
+#go,#search,#clear{
+	display: inline-block;
+}
+#go{
+	margin-right: 10%;
+}
+#date_out,#uid,#ics{
+	display: inline-block;
+	width: 20%;
+}
+h4{
+	color: #2b580c;
+	font-size: 20px;
+}
+h4 label{
+	color: black;
+	margin-right:10%;
+	margin-left: 5%;
+}

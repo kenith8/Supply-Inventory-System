@@ -1,0 +1,15 @@
+#subcatdropdrown,#search,#clear,#getitem{
+	display: inline-block;
+}
+#subcatdropdrown{
+	padding: 10px 0px 10px 20px;
+}
+#search{
+	padding:10px 20px;
+}
+#filter{
+	width: 100%;
+}
+select{
+	width: 100%;
+}

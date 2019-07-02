@@ -1,0 +1,22 @@
+#manage-inventory-wrapper {
+	height: 100%;
+	width: 100%;
+}
+#add-category-form-wrapper {
+	height: 10%;
+	width: 13%;
+	border: 1px solid;
+}
+#add-category-header {
+	text-align: center;
+	border: 1px solid;
+}
+#remove-category-form-wrapper {
+	height: 10%;
+	width: 13%;
+	border: 1px solid;
+}
+#remove-category-header {
+	text-align: center;
+	border: 1px solid;
+}
