@@ -30,22 +30,14 @@
 	$accType = mysqli_fetch_assoc($get_accType);
 
 	if($accType['accountType'] == "admin"){
-		$page = $sidebar->manage_header();
-		$page .=$sidebar->admin_manage();
-		$page .= $sidebar->manage_footer();
+		$sidebar->manage_admin_div();
+		$sidebar->transaction_admin_div();
 	}
 	else{
-		$page = $sidebar->manage_header();
-		$page .= $sidebar->user_manage();
-		$page .= $sidebar->manage_footer();
+		$sidebar->manage_user_div();
+		$sidebar->transaction_user_div();
 	}
 	
-
-	echo $page;
 ?>
-				<a href="controller.php?admin_home"><h3 class="subject">Transactions</h3></a>
-				<ul>
-					
-				</ul>
 			</nav>
 			<div id="center" class="column">

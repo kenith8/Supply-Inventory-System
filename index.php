@@ -1,5 +1,18 @@
 <?php
 	require_once("dbconnection.php");
+
+	if(isset($_SESSION["userID"])){
+		$query = "SELECT accountType FROM user WHERE userID = '$_SESSION[userID]'";
+		$result = mysqli_query($connection, $query);
+		$getType = mysqli_fetch_assoc($result);
+
+		if($getType['accountType'] == "user"){
+			HEADER("location:controller.php?home");
+		}
+		else{
+			HEADER("location:controller.php?admin_home");
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -10,9 +23,9 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<head>
-		<title>Login V19</title>
+		<title>Login</title>
 	</head>
-	<body >
+	<body>
 		
 		<div class="limiter" >
 			<div class="container-login100" 

@@ -6,6 +6,7 @@
 	height: 10%;
 	width: 13%;
 	border: 1px solid;
+	display: inline-block;
 }
 #add-user-header {
 	text-align: center;
@@ -15,6 +16,7 @@
 	height: 10%;
 	width: 18%;
 	border: 1px solid;
+	display: inline-block;
 }
 #reset-user-pass-header {
 	text-align: center;
@@ -24,6 +26,7 @@
 	height: 10%;
 	width: 18%;
 	border: 1px solid;
+	display: inline-block;
 }
 #remove-user-header {
 	text-align: center;

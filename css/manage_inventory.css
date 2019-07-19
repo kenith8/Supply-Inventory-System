@@ -6,6 +6,7 @@
 	height: 10%;
 	width: 13%;
 	border: 1px solid;
+	display: inline-block;
 }
 #add-category-header {
 	text-align: center;
@@ -15,8 +16,25 @@
 	height: 10%;
 	width: 13%;
 	border: 1px solid;
+	display: inline-block;
 }
 #remove-category-header {
 	text-align: center;
+	border: 1px solid;
+}
+#add-item-form-wrapper {
+	height: 10%;
+	width: 13%;
+	border: 1px solid;
+	display: inline-block;
+}
+#add-item-header {
+	text-align: center;
+	border: 1px solid;
+}
+#filter-wrapper {
+	margin-top: 1%;
+	height: 100%;
+	width: 99.8%;
 	border: 1px solid;
 }

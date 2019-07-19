@@ -5,8 +5,8 @@
 		HEADER("location:index.php");
 	}
 ?>
-				<div id="transact_logs-wrapper">
-					<div id="transact_logs">
+				<div id="transact-logs-wrapper">
+					<div id="transact-logs-filter">
 						<div id="go">
 							<form method="post">
 								<input type="date" name="date_filter">

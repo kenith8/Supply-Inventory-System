@@ -175,10 +175,16 @@
 									}
 								}
 							?>
-
 						</table>
 					</div>
-					<div id="table-footer"></div>
+					<?php
+						if(isset($_GET['value']) || isset($_POST['search'])){
+							echo "<div></div>";
+						}
+						else{
+							echo "<div id=\"table-footer\"></div>";
+						}
+					?>
 				</div>
 	 		</div> <!-- center clossing tag -->
 	 	</div> <!-- sidebar-container closing tag -->

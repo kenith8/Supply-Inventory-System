@@ -39,7 +39,7 @@
 		include("includes/layouts/header.php");
 		include("includes/layouts/sidebar.php");
 		if(isset($_GET["admin_home"])){
-			include("admin_home.php");
+			include("admin/admin_home.php");
 		}
 		if(isset($_GET["home"])){
 			include("home.php");
@@ -48,10 +48,13 @@
 			include("getitem.php");
 		}
 		if(isset($_GET["manage_user"])){
-			include("manage_user.php");
+			include("admin/manage_user.php");
 		}
 		if(isset($_GET["manage_inventory"])){
-			include("manage_inventory.php");
+			include("admin/manage_inventory.php");
+		}
+		if(isset($_GET["transaction_logs"])){
+			include("transaction_logs.php");
 		}
 		include("includes/layouts/footer.php");
 	}

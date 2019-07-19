@@ -1,12 +1,14 @@
 #table-footer {
-	width: 99.8%;
+	width: 99%;
 	border: 1px solid;
-	padding: 0.3px;
+	padding: 1px;
 	background-color: black;
+	float: left;
 }
 #table-header {
-	width: 99.8%;
+	width: 99%;
 	border: 1px solid;
-	padding: 0.3px;
+	padding: 1px;
 	background-color: black;
+	float: left;
 }

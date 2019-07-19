@@ -20,6 +20,8 @@
 		<link rel="stylesheet" href="css/admin_home.css">
 		<link rel="stylesheet" href="css/manage_user.css">
 		<link rel="stylesheet" href="css/manage_inventory.css">
+		<link rel="stylesheet" href="css/getitem.css">
+		<link rel="stylesheet" href="css/transaction_logs.css">
 		<link rel="stylesheet" href="css/filter.css">
 		<link rel="stylesheet" href="css/table.css">
 		<style type="text/css">
