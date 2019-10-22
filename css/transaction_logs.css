@@ -5,9 +5,6 @@
 #selectdate,#information{
 	width: 100%;
 }
-#go,#search,#clear{
-	display: inline-block;
-}
 #go{
 	margin-right: 10%;
 }

@@ -3,9 +3,9 @@
     margin-left: 15%;
 }
 #left {
-	background: #e7e92a;
+	background: #ffc30b;
     width: 15%;
-    padding-bottom: 80vh;
+    padding-bottom: 85%;
     float: left;
 }
 #sidebar-container {
@@ -18,14 +18,16 @@
 	height: 100%;
 }
 .orderlist {
-    color: darkgreen;
     margin-left: 15%;
 }
 .subject {
-    color: darkgreen;
+    color: black;
     margin-left: 10%;
 }
 .table-header{
     border-collapse: collapse;
     width: 100%;
+}
+.card {
+    background-color: #ffc30b;
 }

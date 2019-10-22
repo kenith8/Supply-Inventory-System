@@ -1,16 +1,11 @@
-#subcatdropdrown,#search,#clear,#getitem{
+#subcatdropdrown, #search, #clear, #getitem, #additem{
 	display: inline-block;
 }
 #subcatdropdrown{
-	padding: 10px 0px 10px 20px;
+	margin: 0px 0px 0px 10px;
 }
-#search{
-	padding:10px 20px;
-}
-#filter{
+#filter-wrapper{
 	height: 100%;
-	width: 100%;
-}
-select{
-	width: 100%;
+	width: 95%;
+	margin-left: 2%;
 }

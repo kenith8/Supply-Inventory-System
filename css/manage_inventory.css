@@ -2,32 +2,23 @@
 	height: 100%;
 	width: 100%;
 }
-#add-category-form-wrapper {
+#add-category-form-wrapper, #remove-category-form-wrapper, #add-item-form-wrapper{
 	height: 10%;
-	width: 13%;
+	width: 15%;
 	border: 1px solid;
 	display: inline-block;
+	border-radius: 10px;
 }
 #add-category-header {
 	text-align: center;
 	border: 1px solid;
 }
-#remove-category-form-wrapper {
-	height: 10%;
-	width: 13%;
-	border: 1px solid;
-	display: inline-block;
-}
+
 #remove-category-header {
 	text-align: center;
 	border: 1px solid;
 }
-#add-item-form-wrapper {
-	height: 10%;
-	width: 13%;
-	border: 1px solid;
-	display: inline-block;
-}
+
 #add-item-header {
 	text-align: center;
 	border: 1px solid;
@@ -35,6 +26,14 @@
 #filter-wrapper {
 	margin-top: 1%;
 	height: 100%;
-	width: 99.8%;
-	border: 1px solid;
+	width: 100%;
+}
+#edit-item-wrapper, #stock-qty {
+	margin-top: 2%;
+}
+#edit_remove-item-header, #stock-qty-header {
+	text-align: center;
+}
+#edit_remove-item-form-wrapper, #stock-qty-form-wrapper {
+	width: 23%;
 }

@@ -1,5 +1,5 @@
 #footer {
-	background-color:#2b580c;
+	background-color:black;
     width: 100%;
     height: 100%;
     float: left;
@@ -7,4 +7,5 @@
 h6 {
 	text-align: center;
 	margin: 0px;
+	color: white;
 }

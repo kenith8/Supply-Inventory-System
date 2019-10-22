@@ -1,19 +1,31 @@
 #table-wrapper {
-	height: 400px;
-    width: 100%;
-    overflow: auto;
+	width:95%;
+   	height:70vh;
+    overflow:auto;
+    margin: 0 auto;
+    border:5px solid;
 }
 table {
-	height: 10%;
 	width: 100%;
-}
-table, th, td {
-	border: 1px solid black;
+	border-bottom: 1px solid #F6B4A5;
+ }
+table,th,td{
 	border-collapse: collapse;
-	text-align: center;
+	text-align:center;
+	padding:12px 15px;
 }
-th {
-	background-color: grey;
+th{
 	position: sticky;
-	top: 0;
+	top:0;
+	background:#2b580c;
+}
+tr th{
+	padding:12px 15px;
+	color:white;
+}
+td a,th a{
+	text-decoration: none;
+}
+td{
+	border-bottom: 1px solid;
 }

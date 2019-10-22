@@ -2,36 +2,59 @@
 	height: 100%;
 	width: 100%;
 }
-#add-user-form-wrapper {
-	height: 10%;
-	width: 13%;
-	border: 1px solid;
+#account-wrapper {
+	margin: 10% 0% 0% 40%;
+	height: 100%;
+	width: 15%;
 	display: inline-block;
 }
-#add-user-header {
-	text-align: center;
+#add-user-form-wrapper {
+	margin: 5% 0% 0% 7%;
+	height: 100%;
+	width: 17%;
+	display: inline-block;
 	border: 1px solid;
 }
 #reset-user-pass-wrapper {
-	height: 10%;
-	width: 18%;
-	border: 1px solid;
+	margin: 5% 0% 0% 5%;
+	height: 100%;
+	width: 20%;
 	display: inline-block;
-}
-#reset-user-pass-header {
-	text-align: center;
 	border: 1px solid;
 }
 #remove-user-wrapper {
-	height: 10%;
-	width: 18%;
-	border: 1px solid;
+	margin: 5% 0% 0% 5%;
+	height: 100%;
+	width: 20%;
 	display: inline-block;
-}
-#remove-user-header {
-	text-align: center;
 	border: 1px solid;
 }
-#remove-user-form {
+#account-details {
+	height: 100%;
+	width: 100%;
+}
+#account-image img{
+	height: 100%;
+	width: 100%;
+}
+#add-user-header, #reset-user-pass-header, #remove-user-header, #account-header {
+	text-align: center;
+}
+#search-button, #search-button1, #add-button, #show_edit {
+	font-size: 13px;
+}
+#reset-button {
+	font-size: 15.5px;
+}
+#remove-button {
 	font-size: 11px;
 }
+#user-table {
+	height: 600px;
+	width: 70%;
+	float: right;
+	overflow: auto;
+}
+
+
+	

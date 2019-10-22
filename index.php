@@ -27,7 +27,7 @@
 	</head>
 	<body>
 		
-		<div class="limiter" >
+		<div class="limiter">
 			<div class="container-login100" 
 			style="background:url(images/255.jpg); background-repeat: no-repeat; background-size: 100% 100%; ">
 				<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">

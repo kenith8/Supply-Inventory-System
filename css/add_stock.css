@@ -1,0 +1,14 @@
+#additemphp {
+	text-align: center;
+	display: inline-block;
+	width: 80%;
+}
+#back-addstock-button-wrapper {
+	display: inline-block;
+	width: 5%;
+}
+#add-stock-header-wrapper {
+	margin-left: 2%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+}

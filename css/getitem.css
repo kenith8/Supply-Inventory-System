@@ -1,9 +1,12 @@
-#getitemphp{
-	text-align: center;
-	padding:10px 0;
-	width: 100%;
-
+#getitem-header {
+	margin-top: 2%;
+	margin-bottom: 2%;
+	margin-left: 37%;
+	display: inline-block;
 }
-#getitemphp h1{
-	margin:0;
+
+#back-getitem-button-wrapper {
+	margin-left: 3%;
+	padding-bottom: 2%;
+	display: inline-block;
 }

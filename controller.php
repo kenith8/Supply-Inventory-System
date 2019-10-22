@@ -35,7 +35,7 @@
 		session_destroy();
 		HEADER("location:index.php");	
 	}
-	else{				
+	else{
 		include("includes/layouts/header.php");
 		include("includes/layouts/sidebar.php");
 		if(isset($_GET["admin_home"])){
@@ -55,6 +55,15 @@
 		}
 		if(isset($_GET["transaction_logs"])){
 			include("transaction_logs.php");
+		}
+		if(isset($_GET["add_stock"])){
+			include("admin/add_stock.php");
+		}
+		if(isset($_GET["individual"])){
+			include("individual.php");
+		}
+		if(isset($_GET["stats"])){
+			include("stats.php");
 		}
 		include("includes/layouts/footer.php");
 	}
