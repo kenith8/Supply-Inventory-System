@@ -27,7 +27,7 @@ if(isset($_GET['stats'])){
 			</div>
 			<div id="clear">
 				<form action="controller.php?stats&stats=1" method="post">
-					<button style="background-color:#68a225; border:none;border-radius:4px;" type="submit" name="clear"><img src="images/icons/date.png" style="background-color:#68a225;height:30px;width: 30px;"></button>
+					<button style="background-color:#68a225; border:none;border-radius:4px;" type="submit" name="clear"><img src="images/icons/clear.png" style="background-color:#68a225;height:30px;width: 30px;"></button>
 				</form>
 			</div>
 <?php
@@ -36,12 +36,12 @@ if(isset($_GET['stats'])){
 				<div>
 					<h4 style="text-align: center;">
 <?php
-						$date = date('F j, Y',strtotime($_POST['date_filter']));
+						$date = date('F j, Y h:i:sa',strtotime($_POST['date_filter']));
 						echo $date;
 ?>
 						TO
 <?php
-						$date = date('F j, Y',strtotime($_POST['date_filter2']));
+						$date = date('F j, Y h:i:sa',strtotime($_POST['date_filter2']." 23:59:59"));
 						echo $date;
 ?>
 						</h4>
@@ -51,7 +51,7 @@ if(isset($_GET['stats'])){
 ?>
 			
 		<?php
-				$query = mysqli_query($connection,"SELECT * FROM out_inventory");
+				$query = mysqli_query($connection,"SELECT * FROM item_logs");
 				$fetch = mysqli_fetch_array($query);
 				$chart_data = '';
 				$temp_id = array();
@@ -68,12 +68,13 @@ if(isset($_GET['stats'])){
 						if(empty($_POST['date_filter']) || empty($_POST['date_filter2'])){
 							
 						}else{
+							$date1 = $_POST['date_filter'];
+							$date2 = $_POST['date_filter2']." 23:59:59";
 							$query2 = mysqli_query($connection,"SELECT * FROM item where itemID='$temp_id[$x]'");
 							$fetch2 = mysqli_fetch_array($query2);
 							//$query3 = mysqli_query($connection,"SELECT SUM(qty) as total FROM out_inventory where itemID='$temp_id[$x]' AND date_out BETWEEN '$_POST[date_filter]' AND '$_POST[date_filter2]'");
 							$qty = 0;
-							$query4 = mysqli_query($connection,"SELECT * FROM out_inventory where itemID='$temp_id[$x]' AND date_out BETWEEN '$_POST[date_filter]' AND '$_POST[date_filter2]'");
-							//$fetch4 = mysqli_fetch_array($query4);
+							$query4 = mysqli_query($connection,"SELECT * FROM item_logs where itemID='$temp_id[$x]' AND date_time BETWEEN '$date1' AND '$date2' ORDER BY date_time DESC");
 							while($row = mysqli_fetch_array($query4)){
 								$qty += $row['qty']; 
 								
@@ -85,10 +86,11 @@ if(isset($_GET['stats'])){
 							}
 							$temp = $temp_id[$x];
 						}
-					}else{
+					}
+					else{
 						$query2 = mysqli_query($connection,"SELECT * FROM item where itemID='$temp_id[$x]'");
 						$fetch2 = mysqli_fetch_array($query2);
-						$query3 = mysqli_query($connection,"SELECT SUM(qty) as total FROM out_inventory where itemID='$temp_id[$x]'");
+						$query3 = mysqli_query($connection,"SELECT SUM(qty) as total FROM item_logs where itemID='$temp_id[$x]'");
 						$fetch3 = mysqli_fetch_array($query3);
 						$sum = $fetch3['total'];
 						if($temp != $temp_id[$x]){
@@ -132,7 +134,7 @@ if(isset($_GET['stats'])){
 				</form>
 			</div>
 			<div id="clear">
-				<form action="controller.php?stats&stats=1" method="post">
+				<form action="controller.php?stats&stats=2" method="post">
 					<button style="background-color:#68a225; border:none;border-radius:4px;" type="submit" name="clear"><img src="images/icons/clear.png" style="background-color:#68a225;height:30px;width: 30px;"></button>
 				</form>
 			</div>
@@ -184,8 +186,7 @@ if(isset($_GET['stats'])){
 							$query2 = mysqli_query($connection,"SELECT * FROM item where itemID='$temp_id[$x]'");
 							$fetch2 = mysqli_fetch_array($query2);
 							$qty = 0;
-							$query4 = mysqli_query($connection,"SELECT * FROM in_request where itemID='$temp_id[$x]' AND date_out BETWEEN '$_POST[date_filter]' AND '$_POST[date_filter2]'");
-							//$fetch4 = mysqli_fetch_array($query4);
+							$query4 = mysqli_query($connection,"SELECT * FROM in_inventory where itemID='$temp_id[$x]' AND date_in BETWEEN '$_POST[date_filter]' AND '$_POST[date_filter2]'");
 							while($row = mysqli_fetch_array($query4)){
 								$qty += $row['qty'];	
 							}	
@@ -238,14 +239,13 @@ if(isset($_GET['stats'])){
 <?php
 		if(isset($_GET['page'])){
 			if($_GET['page']==1){
-				$query = mysqli_query($connection,"SELECT * FROM item");
-				$fetch = mysqli_fetch_array($query);
+				$result = mysqli_query($connection,"SELECT * FROM item");
 				$chart_data = '';
 				$temp_id = array();
 				$temp = null;
 				$count = 0;
 
-				while ($get_item_id = mysqli_fetch_assoc($query)) {
+				while ($get_item_id = mysqli_fetch_assoc($result)) {
 					$temp_id[$count] = $get_item_id['itemID'];
 					$count++;
 				}
@@ -265,7 +265,8 @@ if(isset($_GET['stats'])){
 
 					$temp = $temp_id[$x];
 				}
-			}else{
+			}
+			else{
 				$query = mysqli_query($connection,"SELECT * FROM item");
 				$fetch = mysqli_fetch_array($query);
 				$chart_data = '';
@@ -294,7 +295,6 @@ if(isset($_GET['stats'])){
 			}
 		}
 ?>
-
 			<div id="myfirstchart">
 				<script type="text/javascript">
 					new Morris.Bar({

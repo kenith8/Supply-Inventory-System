@@ -65,6 +65,6 @@
 		if(isset($_GET["stats"])){
 			include("stats.php");
 		}
-		include("includes/layouts/footer.php");
+		//include("includes/layouts/footer.php");
 	}
 ?>

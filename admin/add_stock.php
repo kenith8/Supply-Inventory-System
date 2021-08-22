@@ -18,7 +18,7 @@
 		$message = "";
 		$redirect = "";
 		if(empty($_POST['ris'])){
-			$message = "Please Input RIS NO. FIRST";
+			$message = "Please Input ICS NO. / RIS NO. FIRST";
 			$redirect = "controller.php?add_stock";
 		}
 		else{
@@ -29,19 +29,30 @@
 			}
 			else{
 				$addquery = mysqli_query($connection,"SELECT * FROM add_stock where userID ='$_SESSION[userID]'");
-				foreach($_POST['itemqty'] as $finalqty){
-					if(mysqli_num_rows($addquery)>0){
-						$row = mysqli_fetch_array($addquery);
-						$addstockidquery = mysqli_query($connection,"SELECT * FROM item where itemID ='$row[itemID]'");
-						$addstockidfetch = mysqli_fetch_array($addstockidquery);
-						$qtyupdate = $addstockidfetch['qty'] + $finalqty;
-						mysqli_query($connection,"UPDATE item SET qty='$qtyupdate' where itemID='$addstockidfetch[itemID]'");
-						mysqli_query($connection,"INSERT INTO in_inventory(risNO, userID, itemID, qty, date_in) VALUES('$_POST[ris]','$_SESSION[userID]','$row[itemID]','$finalqty',NOW())");
-					}
+
+				$qty = $_POST['itemqty'];
+				$qty_len = count($qty);
+
+				for($x = 0; $x < $qty_len; $x++){
+					$row = mysqli_fetch_array($addquery);
+					$addstockidquery = mysqli_query($connection,"SELECT * FROM item where itemID ='$row[itemID]'");
+					$addstockidfetch = mysqli_fetch_array($addstockidquery);
+
+					$qtyupdate = $addstockidfetch['qty'] + $qty[$x];
+					
+					mysqli_query($connection,"UPDATE item SET qty='$qtyupdate' where itemID='$addstockidfetch[itemID]'");
+					
+					$query = "INSERT INTO item_stock(itemID, risNO, qty, date_in) VALUES('$row[itemID]','$_POST[ris]','$qty[$x]',NOW())";
+					$result = mysqli_query($connection, $query);
+					
+					$query1 = "INSERT INTO `in_inventory` (`risNO`, `userID`, `itemID`, `qty`, `date_in`) VALUES ('$_POST[ris]','$_SESSION[userID]','$row[itemID]','$qty[$x]',NOW())";
+					$result1 = mysqli_query($connection, $query1);
 				}
+				
 				mysqli_query($connection,"DELETE FROM add_stock where userID='$_SESSION[userID]'");
-					$message = "Add item Successfully!";
-					$redirect = "controller.php?manage_inventory&item";
+				
+				$message = "Item/s added successfully.";
+				$redirect = "controller.php?manage_inventory&item";
 			}
 		}
 		echo "<script type='text/javascript'>
@@ -52,12 +63,14 @@
 	}
 	if(isset($_GET['discard'])){
 		$itemID = $_GET['discard'];
-		$query = "DELETE FROM add_stock where itemID='$itemID'";
+		$query = "DELETE FROM add_stock where itemID='$itemID' AND userID='$_SESSION[userID]'";
 		$discard = mysqli_query($connection, $query);
+		header("location:controller.php?add_stock");
 	}
 	if(isset($_GET['discardAll'])){
 		$query = "DELETE FROM add_stock where userID='$_SESSION[userID]'";
 		$discard = mysqli_query($connection, $query);
+		header("location:controller.php?add_stock");
 	}
 ?>
 				<div id = "additem-wrapper">
@@ -81,7 +94,7 @@
 											<th>Item Name</th>
 											<th>Qty.</th>
 											<th>
-												<button class="btn btn-danger" onclick="discardAll()">Discard All</button>
+												<input type="button" class="btn btn-danger" onclick="discardAll()" value="Discard All">
 											</th>
 										</tr>
 									<?php
@@ -114,8 +127,7 @@
 												</select>
 											</td>
 												<td>
-													<button class="btn btn-danger" onclick="discard(<?php echo $row['itemID']; ?>)">Discard
-													</button>
+													<input type="button" class="btn btn-danger" onclick="discard(<?php echo $row['itemID']; ?>)" value="Discard">
 												</td>
 											</tr>
 									<?php
@@ -123,7 +135,7 @@
 										}
 									?>
 									</table>
-									<label style="font:bold;">RIS NO.</label>
+									<label style="font:bold;">ICS/RIS NO.</label>
 									<input class="form-control mb-2 mr-sm-2" type="text" name="ris">
 									<button class="btn btn-info mb-2 mr-sm-2" type="submit" name="add">Add</button>
 								</form>
@@ -137,15 +149,15 @@
 <script type="text/javascript">
 	function discard(item_ID){
 		var id = item_ID;
-		var c = confirm("Do really want to discard?");
-		if(c == true){
-			location.href = "controller.php?add_stock&discard="+id;
+		if(confirm("Do you really want to discard?")){
+			window.location.href = 'controller.php?add_stock&discard='+id+'';
+			return true;
 		}
 	}
 	function discardAll(){
-		var c = confirm("Do really want to discard all?");
-		if(c == true){
-			location.href = "controller.php?add_stock&discardAll";
+		if(confirm("Do you really want to discard all?")){
+			window.location.href = 'controller.php?add_stock&discardAll';
+			return true;
 		}
 	}
 </script>

@@ -1,39 +1,67 @@
 #manage-inventory-wrapper {
-	height: 100%;
 	width: 100%;
-}
-#add-category-form-wrapper, #remove-category-form-wrapper, #add-item-form-wrapper{
-	height: 10%;
-	width: 15%;
-	border: 1px solid;
-	display: inline-block;
-	border-radius: 10px;
-}
-#add-category-header {
-	text-align: center;
-	border: 1px solid;
+	height: 100%;
 }
 
-#remove-category-header {
+#add-category-header, #add-sub-header, #remove-category-header, #remove-subcat-header, #add-item-header, #edit_remove-item-header, #stock-qty-header {
 	text-align: center;
-	border: 1px solid;
 }
 
-#add-item-header {
-	text-align: center;
-	border: 1px solid;
-}
 #filter-wrapper {
 	margin-top: 1%;
 	height: 100%;
-	width: 100%;
+	width: 95%;
 }
-#edit-item-wrapper, #stock-qty {
-	margin-top: 2%;
+
+#add-category-bg-wrapper{
+	margin: 10% 0% 0% 15%;
+ 	box-shadow: 2px 2px 2px 2px #888888;
+ 	padding: 20px;
+	width: 25%;
+	float: left;
+	border-radius: 3%;
 }
-#edit_remove-item-header, #stock-qty-header {
-	text-align: center;
+#add-sub-bg-wrapper{
+	margin: 10% 0% 0% 15%;
+ 	box-shadow: 2px 2px 2px 2px #888888;
+ 	padding: 20px;
+	width: 25%;
+	float: left;
+	border-radius: 3%;
 }
-#edit_remove-item-form-wrapper, #stock-qty-form-wrapper {
-	width: 23%;
+#remove-category-bg-wrapper{
+	margin: 10% 0% 0% 15%;
+ 	box-shadow: 2px 2px 2px 2px #888888;
+ 	padding: 20px;
+	width: 25%;
+	float: left;
+	border-radius: 3%;
+}
+#remove-subcat-bg-wrapper{
+	margin: 10% 0% 0% 15%;
+ 	box-shadow: 2px 2px 2px 2px #888888;
+ 	padding: 20px;
+	width: 25%;
+	float: left;
+	border-radius: 3%;
+}
+#add-item-bg-wrapper{
+	margin: 10% 0% 0% 35%;
+ 	box-shadow: 2px 2px 2px 2px #888888;
+ 	padding: 20px;
+	width: 25%;
+	float: left;
+	border-radius: 3%;
+}
+#item-bg-wrapper{
+	margin: 1% 0% 0% 4.5%;
+	float: left;
+}
+#edit_remove-item-bg-wrapper, #stock-qty{
+	margin: 1% 0% 0% 7%;
+ 	box-shadow: 2px 2px 2px 2px #888888;
+ 	padding: 20px;
+	width: 30%;
+	float: left;
+	border-radius: 3%;
 }

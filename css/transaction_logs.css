@@ -1,17 +1,36 @@
-#transact-logs-wrapper {
-	width: 100%;
-	height: 100%;
+#transaction-bg-wrapper{
+	margin: 1% 0% 0% 5%;
+	width: 90%;
+	float: left;
 }
 #selectdate,#information{
 	width: 100%;
 }
-#go{
-	margin-right: 10%;
+#date_time,#uid,#ics,#date_in{
+	display: inline-block;
+	width: 30%;
+	margin-left: 3%;
 }
-#date_out,#uid,#ics{
+#transact_logs{
+	margin-left: 3%;
+}
+#indiv{
+	margin-left: 5%;
+}
+#category{
+	width: 10%;
+}
+#transaction_title, #transaction_title2, #transaction_title3, #transaction_title4{
 	display: inline-block;
 	width: 20%;
 }
+#transaction_title{
+	margin-left: 2%;
+}
+#transaction_title4{
+	margin-right: 2%;
+}
+
 h4{
 	color: #2b580c;
 	font-size: 20px;
@@ -20,4 +39,20 @@ h4 label{
 	color: black;
 	margin-right: 15%;
 	margin-left: 1%;
+}
+
+#logid-1-bg-wrapper{
+	margin: 1% 0% 0% 0%;
+	width: 100%;
+	float: left;
+}
+#logid-2-bg-wrapper{
+	margin: 1% 0% 0% 0%;
+	width: 100%;
+	float: left;
+}
+#logid-3-bg-wrapper{
+	margin: 1% 0% 0% 0%;
+	width: 100%;
+	float: left;
 }

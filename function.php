@@ -33,8 +33,8 @@
 			$page .= "<button type=\"button\" class=\"btn\" data-toggle=\"dropdown\">Manage Inventory
 				</button>";
 			$page .= "<div class=\"dropdown-menu\">";
-	      	$page .= "<a class=\"dropdown-item\" href=\"controller.php?manage_inventory&cr8_cat\">Add category</a>";
-	     	$page .= "<a class=\"dropdown-item\" href=\"controller.php?manage_inventory&rem_cat\">Remove category</a>";
+	      	$page .= "<a class=\"dropdown-item\" href=\"controller.php?manage_inventory&cr8_cat\">Add Category / Sub-Category</a>";
+	     	$page .= "<a class=\"dropdown-item\" href=\"controller.php?manage_inventory&rem_cat\">Remove Category / Sub-Category</a>";
 	      	$page .= "<a class=\"dropdown-item\" href=\"controller.php?manage_inventory&add_item\">Add new item</a>";
 	      	$page .= "<a class=\"dropdown-item\" href=\"controller.php?manage_inventory&item\">Item</a>";
 	      	$page .= "</div>";
@@ -49,7 +49,7 @@
 			return $page;
 		}
 		private function user_manage(){
-			$page = "<li><button type=\"button\" class=\"btn btn-primary\" href=\"controller.php?manage_user\">Manage account</button></li>";
+			$page = "<li><a class=\"btn\" href=\"controller.php?manage_user&profile\">Manage account</a></li>";
 			
 			return $page;
 		}
@@ -113,7 +113,7 @@
 			$page = "<li><a class=\"btn\" href=\"controller.php?transaction_logs\">Items</a></li>";
 			$page .= "<li><a class=\"btn\" href=\"controller.php?transaction_logs&logid=1\">Out</a></li>";
 			$page .= "<li><a class=\"btn\" href=\"controller.php?transaction_logs&logid=2\">In</a></li>";
-			$page .= "<li><a class=\"btn\" href=\"controller.php?transaction_logs&logid=3\">Logs</a></li>";
+			$page .= "<li><a class=\"btn\" href=\"controller.php?transaction_logs&logid=3\">Summary out transaction</a></li>";
 			
 			return $page;
 		}
@@ -121,7 +121,7 @@
 			$page = "<li><a class=\"btn\" href=\"controller.php?transaction_logs\">Items</a></li>";
 			$page .= "<li><a class=\"btn\" href=\"controller.php?transaction_logs&logid=1\">Out</a></li>";
 			$page .= "<li><a class=\"btn\" href=\"controller.php?transaction_logs&logid=2\">In</a></li>";
-			$page .= "<li><a class=\"btn\" href=\"controller.php?transaction_logs&logid=3\">Logs</a></li>";
+			$page .= "<li><a class=\"btn\" href=\"controller.php?transaction_logs&logid=3\">Summary out transaction</a></li>";
 			
 			return $page;
 		}

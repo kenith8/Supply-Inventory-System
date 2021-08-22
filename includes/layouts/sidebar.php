@@ -1,6 +1,6 @@
 <?php
 	include_once("dbconnection.php");
-	require_once("F:/Wamp/wamp64/www/InventorySystem/function.php");
+	require_once("D:/wamp64/www/InventorySystem/function.php");
 	
 	if(!(isset($_SESSION["userID"]))){
 		HEADER("location:index.php");
@@ -43,6 +43,7 @@
 					$query1 = "SELECT * FROM category";
 					$result1 = mysqli_query($connection,$query1);
 					while($category = mysqli_fetch_assoc($result1)){
+						if($getType['accountType'] == "admin"){
 				?>
                     				<li>
                     					<a class="btn" href="controller.php?admin_home&catID=<?php echo $category['catID']; ?>"><?php echo $category['supplycat']; ?>
@@ -50,6 +51,15 @@
                     				</li>
                     			
 				<?php
+						}
+						else{
+				?>
+									<li>
+                    					<a class="btn" href="controller.php?home&catID=<?php echo $category['catID']; ?>"><?php echo $category['supplycat']; ?>
+                    					</a>
+                    				</li>
+				<?php			
+						}
 					}
 				?>
                 				</ul>

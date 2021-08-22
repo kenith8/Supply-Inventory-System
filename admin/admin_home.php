@@ -21,7 +21,7 @@
 		mysqli_query($connection,"UPDATE item SET qty='$updateqtyfetch[totalqty]' WHERE itemID='$row[itemID]'");
 	}
 
-	$img_items_dir = 'F:/Wamp/wamp64/www/InventorySystem/images/items/';
+	$img_items_dir = 'D:/wamp64/www/InventorySystem/images/items/';
 	$img_items_subdir = 'images/items/';
 		
 	if(isset($_GET['catID'])){
@@ -56,7 +56,7 @@
 							$value = 0;
 							$results = mysqli_query($connection, "SELECT * FROM subcat WHERE catID='$_GET[catID]'");
 					?>
-							<option value="novalue" select="selected">Filter table</option>
+							<option value="novalue" select="selected">Supply...</option>
 						<?php	
 							while($row = mysqli_fetch_array($results)){
 						?>
@@ -75,7 +75,7 @@
 					</div>
 					<div id="getitem">
 						<form class="form-inline" method="post">
-							<button class="form-control mb-2 mr-sm-2" type="submit" name="add_to_cart" style="background-color:#B3de81; border:none;border-radius:4px;"><img src="images/icons/get.png" style="background-color:#B3de81;height:30px;width: 30px; margin:0;"> Get List</button>
+							<button class="form-control mb-2 mr-sm-2" type="submit" name="add_to_cart" style="background-color:#B3de81; border:none;border-radius:4px;"><img src="images/icons/get.png" style="background-color:#B3de81;height:30px;width: 30px; margin:0;"> Get Item List</button>
 						</form>
 				<?php
 					if(isset($_POST['add_to_cart'])){
@@ -87,7 +87,7 @@
 				?>
 						<script type='text/javascript'>
 							window.onload = function(){
-								alert("Empty Table. Get item first");
+								alert("Table is empty, no selected item yet.");
 								location = "controller.php?admin_home&catID=<?php echo $categoryid; ?>";
 							}
 						</script>
@@ -107,8 +107,8 @@
 						<table id="process-manager-table">
 							<thead>							
 								<tr class="tableheader">
-									<th>Item ID</th>
 									<th>Item Name</th>
+									<th>ICS/RIS</th>
 									<th>Date</th>
 									<th>Qty.</th>
 									<th></th>
@@ -155,9 +155,9 @@
 					?>
 							<tbody>
 								<tr>
-									<td><?php echo $row['itemID'];?></td>
-							       	<td style="text-align: left;"><a href="<?php echo $src;?>" data-lightbox="mygallery"><?php echo $row['item_name'];?></a></td>
+							       	<td style="text-align: center;"><a href="<?php echo $src;?>" data-lightbox="mygallery"><?php echo $row['item_name'];?></a></td>
 							        <td></td>
+									<td></td>
 							        <td style="font-weight: bold;"><?php echo  $fetchitemstock['totalqty']; ?></td>
 							        <td></td>
 							<?php
@@ -167,9 +167,9 @@
 							?>
 									<tr id="datarow">
 							            <td></td>
-							            <td></td>
-									    <td><?php echo  $date; ?></td>
-									   	<td><?php echo  $row2['qty']; ?></td>
+							            <td><?php echo $row2['risNO']; ?></td>
+									    <td><?php echo $date; ?></td>
+									   	<td><?php echo $row2['qty']; ?></td>
 									    <td><button class="form-control mb-2 mr-sm-2" style="background-color:#B3de81; border:none;border-radius:4px;" onclick="window.location.href = 'controller.php?admin_home&catID=<?php echo $_GET['catID'];?>&get=<?php echo $row2['stockID'];?>';"><img src="images/icons/add.png" style="background-color:#B3de81;height:30px;width: 30px;"> Get</button></td>
 								    </tr>
 							<?php
@@ -194,8 +194,8 @@
 								if(mysqli_num_rows($checkquery)>0){
 									echo "<script type='text/javascript'>
 										window.onload = function(){
-											alert('You already add this Item!');
-											location = 'controller.php?admin_home';}
+											alert('You already add this $item[item_name] to the Get item list');
+											location = 'controller.php?admin_home&catID=$catID';}
 										</script>";
 								}
 								else{
@@ -203,14 +203,14 @@
 										echo "<script type='text/javascript'>
 											window.onload = function(){
 												alert('Not enough Quantity');
-												location = 'controller.php?admin_home';}
+												location = 'controller.php?admin_home&catID=$catID';}
 											</script>";
 									}
 									else{
-										mysqli_query($connection,"INSERT INTO get_item (userID,itemID,stockID) VALUES ('$_SESSION[userID]','$checkidfetch[itemID]','$getID')");
+										$result = mysqli_query($connection,"INSERT INTO get_item (userID,stockID,itemID) VALUES ('$_SESSION[userID]','$getID','$checkidfetch[itemID]')");
 										echo "<script type='text/javascript'>
 											window.onload = function(){
-												alert('$item[item_name] is added to Get List.');
+												alert('$item[item_name] is added to Get Item List.');
 												location = 'controller.php?admin_home&catID=$catID';}
 											</script>";
 									}
@@ -243,9 +243,9 @@
 					?>		
 							<tbody>
 								<tr>
-									<td><?php echo $row['itemID'];?></td>
-							       	<td style="text-align: left;"><a href="<?php echo $src;?>" data-lightbox="mygallery"><?php echo $row['item_name'];?></a></td>
+							       	<td style="text-align: center;"><a href="<?php echo $src;?>" data-lightbox="mygallery"><?php echo $row['item_name'];?></a></td>
 							       	<td></td>
+									<td></td>
 							        <td style="font-weight: bold;"><?php echo $fetchitemstock['totalqty'];?></td>
 							        <td></td>
 							<?php
@@ -255,9 +255,9 @@
 							?>
 									<tr id="datarow">
 							          	<td></td>
-							            <td></td>
-									   	<td><?php echo  $date; ?></td>
-									    <td><?php echo  $row2['qty']; ?></td>
+							            <td><?php echo $row2['risNO']; ?></td>
+									   	<td><?php echo $date; ?></td>
+									    <td><?php echo $row2['qty']; ?></td>
 									    <td><button class="form-control mb-2" style="background-color:#B3de81; border:none;border-radius:4px;" onclick="window.location.href = 'controller.php?admin_home&catID=<?php echo $_GET['catID'];?>&get=<?php echo $row2['stockID'];?>';"><img src="images/icons/add.png" style="background-color:#B3de81;height:30px;width: 30px;"> Get</button></td>
 								    </tr>
 							<?php
@@ -280,7 +280,7 @@
 ?>
 				<div id="admin_home-header-wrapper">
 					<h2>
-						Inventory Supplies
+						All Inventory Supplies
 					</h2>
 				</div>
 				<div id="filter">
@@ -305,7 +305,7 @@
 						$value = 0;
 						$results = mysqli_query($connection, "SELECT * FROM subcat");
 				?>
-							<option value="novalue" select="selected">Filter table</option>
+							<option value="novalue" select="selected">Supply...</option>
 					<?php	
 						while($row = mysqli_fetch_array($results)){
 					?>
@@ -324,7 +324,7 @@
 					</div>
 					<div id="getitem">
 						<form class="form-inline" method="post">
-							<button class="form-control mb-2 mr-sm-2" type="submit" name="add_to_cart" style="background-color:#B3de81; border:none;border-radius:4px;"><img src="images/icons/get.png" style="background-color:#B3de81;height:30px;width: 30px; margin:0;"> Get List</button>
+							<button class="form-control mb-2 mr-sm-2" type="submit" name="add_to_cart" style="background-color:#B3de81; border:none;border-radius:4px;"><img src="images/icons/get.png" style="background-color:#B3de81;height:30px;width: 30px; margin:0;"> Get Item List</button>
 						</form>
 				<?php
 					if(isset($_POST['add_to_cart'])){
@@ -335,7 +335,7 @@
 						else{
 							echo "<script type='text/javascript'>
 								window.onload = function(){
-									alert('Empty Table. Get item first');
+									alert('Table is empty, no selected item yet.');
 									location = 'controller.php?admin_home';}
 								</script>";
 						}
@@ -353,8 +353,8 @@
 							<table class="gridtable" id="tableMain">
 								<thead>							
 									<tr class="tableheader">
-										<th>Item ID</th>
 										<th>Item Name</th>
+										<th>ICS/RIS</th>
 										<th>Date</th>
 										<th>Qty.</th>
 										<th></th>
@@ -372,7 +372,7 @@
 								$results = mysqli_query($connection,"SELECT * FROM item");
 							}
 							if($value<=0){
-								while ($row = mysqli_fetch_array($results)) { 
+								while ($row = mysqli_fetch_array($results)) {
 									$subcat3 = $row['subcatID'];
 									$subcat = mysqli_query($connection, "SELECT * FROM subcat where subcatID='$subcat3'");
 									$subcat2= mysqli_fetch_array($subcat);
@@ -396,9 +396,9 @@
 						?>
 								<tbody>
 									<tr id="breakrow">
-										<td ><?php echo $row['itemID'];?></td>
-							            <td style="text-align: left;"><a href="<?php echo $src; ?>" data-lightbox="mygallery"><?php echo $row['item_name'];?></a></td>
+							            <td style="text-align: center;"><a href="<?php echo $src; ?>" data-lightbox="mygallery"><?php echo $row['item_name'];?></a></td>
 							            <td></td>
+										<td></td>
 							            <td style="font-weight: bold;"><?php echo $fetchitemstock['totalqty'];?></td>
 							            <td></td>
 								<?php
@@ -408,7 +408,7 @@
 								?>
 										<tr id="datarow">
 							            	<td></td>
-							            	<td></td>
+							            	<td><?php echo $row2['risNO'];?></td>
 									        <td><?php echo  $date; ?></td>
 									        <td><?php echo  $row2['qty']; ?></td>
 									        <td><button class="form-control mb-2 mr-sm-2" style="background-color:#B3de81; border:none;border-radius:4px;" onclick="window.location.href = 'controller.php?admin_home&get=<?php echo $row2['stockID'];?>';"><img src="images/icons/add.png" style="background-color:#B3de81;height:30px;width: 30px;"> Get</button></td>
@@ -433,7 +433,7 @@
 									if(mysqli_num_rows($checkquery)>0){
 										echo "<script type='text/javascript'>
 											window.onload = function(){
-												alert('You already add this Item!');
+												alert('You already add this $item[item_name] to the Get item list');
 												location = 'controller.php?admin_home';}
 											</script>";
 									}
@@ -446,11 +446,10 @@
 												</script>";
 										}
 										else{
-											mysqli_query($connection,"INSERT INTO get_item (userID,itemID,stockID) VALUES ('$_SESSION[userID]','$checkidfetch[itemID]','$getID')");
-
+											$result = mysqli_query($connection,"INSERT INTO get_item (userID,stockID,itemID) VALUES ('$_SESSION[userID]','$getID','$checkidfetch[itemID]')");
 											echo "<script type='text/javascript'>
 												window.onload = function(){
-													alert('$item[item_name] is added to Get List.');
+													alert('$item[item_name] is added to Get Item List.');
 													location = 'controller.php?admin_home';}
 												</script>";
 										}
@@ -459,7 +458,7 @@
 							}
 							else{
 								$results = mysqli_query($connection, "SELECT * FROM item where subcatID='$value'");
-								while ($row = mysqli_fetch_array($results)) { 
+								while ($row = mysqli_fetch_array($results)) {
 									$subcat3 = $row['subcatID'];
 									$subcat = mysqli_query($connection, "SELECT * FROM subcat where subcatID='$subcat3'");
 									$subcat2= mysqli_fetch_array($subcat);
@@ -481,9 +480,9 @@
 						?>
 								<tbody>
 									<tr id="breakrow">
-										<td ><?php echo $row['itemID'];?></td>
-							            <td style="text-align: left;"><a href="<?php echo $src; ?>" data-lightbox="mygallery"><?php echo $row['item_name'];?></a></td>
+							            <td style="text-align: center;"><a href="<?php echo $src; ?>" data-lightbox="mygallery"><?php echo $row['item_name'];?></a></td>
 							            <td></td>
+										<td></td>
 							            <td style="font-weight: bold;"><?php echo $fetchitemstock['totalqty'];?></td>
 							            <td></td>
 								<?php
@@ -492,8 +491,8 @@
 										$date = date('F j, Y',strtotime($row2['date_in']));
 								?>
 										<tr id="datarow">
-							            	<td></td>
-							            	<td></td>
+											<td></td>
+											<td ><?php echo $row2['risNO'];?></td>
 									        <td><?php echo  $date; ?></td>
 									        <td><?php echo  $row2['qty']; ?></td>
 									        <td><button class="form-control mb-2" style="background-color:#B3de81; border:none;border-radius:4px;" onclick="window.location.href = 'controller.php?admin_home&get=<?php echo $row2['stockID'];?>';"><img src="images/icons/add.png" style="background-color:#B3de81;height:30px;width: 30px;"> Get</button></td>

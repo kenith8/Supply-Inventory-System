@@ -1,0 +1,14 @@
+Folder			    File name		        line		variable
+admin/			    admin_home.php		    24		    $img_items_dir
+admin/			    manage_inventory.php	20		    $image_item_dir
+admin/			    manage_user.php		    3		    require_once();
+						                    4		    $image_item_dir
+includes/layouts/   sidebar.php             3           require_once();
+../			        constants.php		    2-6		    define() //database 
+
+variable
+../			        home.php		        24		    $img_items_dir
+
+
+definition(s)
+../	- InventorySystem folder

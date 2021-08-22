@@ -11,17 +11,17 @@ table {
  }
 table,th,td{
 	border-collapse: collapse;
-	text-align:center;
-	padding:12px 15px;
+	text-align: center;
+	padding: 12px 15px;
 }
 th{
 	position: sticky;
-	top:0;
-	background:#2b580c;
+	top: 0;
+	background: #2b580c;
 }
 tr th{
-	padding:12px 15px;
-	color:white;
+	padding: 12px 15px;
+	color: white;
 }
 td a,th a{
 	text-decoration: none;
